@@ -1,6 +1,7 @@
 package inventories
 
 import (
+	"fmt"
 	"github.com/adebmbng/bcg-test/entities"
 	"reflect"
 	"testing"
@@ -192,8 +193,11 @@ func Test_calculateFinalPrice(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := calculateFinalPrice(tt.args.req, tt.args.prms, tt.args.inventoryMap); !reflect.DeepEqual(got, tt.want) {
+			got := calculateFinalPrice(tt.args.req, tt.args.prms, tt.args.inventoryMap);
+			if  !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("calculateFinalPrice() = %v, want %v", got, tt.want)
+			} else {
+				fmt.Println(got.FinalPrice)
 			}
 		})
 	}
